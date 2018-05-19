@@ -1,5 +1,11 @@
-let a = "1";
+const Gpio = require('onoff').Gpio;
 
-a = a + 1;
+let led = new Gpio(4, 'out'), //#B
+  interval;
 
-console.log(a);
+interval = setInterval(function () { //#C
+  var value = (led.readSync() + 1) % 2; //#D
+  led.write(value, function() { //#E
+    console.log("Changed LED state to: " + value);
+  });
+}, 2000);

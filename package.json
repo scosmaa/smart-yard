@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/scosmaa/smart-yard/issues"
   },
-  "homepage": "https://github.com/scosmaa/smart-yard#readme"
+  "homepage": "https://github.com/scosmaa/smart-yard#readme",
+  "dependencies": {
+    "onoff": "^3.1.0"
+  }
 }
