@@ -1,0 +1,8 @@
+{
+    "relays" : [
+        {
+            "pin_id": 4,
+            "direction": "out"
+        }
+    ]
+}
