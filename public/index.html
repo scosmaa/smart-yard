@@ -9,11 +9,28 @@
 </head>
 
 <body>
-    Hello World!
+    <span id="status"></span>
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io();
+            socket.on('value_changed', function(msg){
+                console.log('message: ' + msg);
+                debugger
+                document.getElementById('status').innerHTML = msg;
+            });
+        
+        function turnOn() {
+            console.log(1);
+            socket.emit('change_value', 1);
+        }
+        function turnOff() {
+            console.log(0);
+            socket.emit('change_value', 0);
+        }
     </script>
 </body>
-
+<div>
+    <input type="button" value="On" onclick="turnOn()">
+    <input type="button" value="Off" onclick="turnOff()">
+</div>
 </html>
