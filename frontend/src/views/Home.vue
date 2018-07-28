@@ -7,7 +7,7 @@
             {{item.description}}
           </div>
           <div class="card-body">
-            <img src="../assets/logo.svg">
+            <img :src="'img/' + item.type + '.svg'">
             <toggle-button class="float-right toggle-button"
               :labels="true"
               :width="140"
