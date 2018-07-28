@@ -1,18 +1,21 @@
 {
     "relays" : [
         {
+            "type" : "salad",
             "code" : "area1",
             "description" : "Area 1",
             "pin_id": 4,
             "direction": "out"
         },
         {
+            "type" : "tomatoes",
             "code" : "area2",         
             "description" : "Area 2",
             "pin_id": 17,
             "direction": "out"
         },
-        {
+        {   
+            "type" : "onion",
             "code" : "area3",
             "description" : "Area 3",
             "pin_id": 27,
