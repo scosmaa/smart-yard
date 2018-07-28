@@ -25,11 +25,12 @@ io.on('connection', function (socket) {
       io.emit('value_changed', `Changed LED ${msg.code} state to ${msg.value}`);
     });
   });
+
+  socket.on('get_config', function () {
+    io.emit('config', config);
+  });
 });
 
-io.on('get_config', function () {
-  io.emit('config', config);
-});
 
 http.listen(3000, function () {
   console.log('Example app listening on port 3000!');
