@@ -9,7 +9,7 @@ const config = require('./config.json');
 server.use(Express.static('public'));
 
 let relays = [],
-    statuses = [];
+    statuses = {};
 
 config.relays.map((item) => {
   let relay = new Gpio(item.pin_id, item.direction);
@@ -25,13 +25,13 @@ io.on('connection', function (socket) {
   console.log('a user connected');
   socket.on('change_value', function (msg) {
     relays[msg.code].write(msg.value, function () {
-      statuses[msg.code].value = !!msg.value;
-      io.emit('value_changed', `Changed LED ${msg.code} state to ${msg.value}`);
+      statuses[msg.code].value = !!!msg.value;
+      io.emit('value_changed', statuses[msg.code]);
     });
   });
 
   socket.on('get_config', function () {
-    io.emit('config', statuses);
+    io.emit('config', config);
   });
 });
 
