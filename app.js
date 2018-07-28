@@ -18,13 +18,17 @@ config.relays.map((item) => {
 
 
 io.on('connection', function (socket) {
-  io.emit('config', config);
+  //io.emit('config', config);
   console.log('a user connected');
   socket.on('change_value', function (msg) {
     relays[msg.code].write(msg.value, function () {
       io.emit('value_changed', `Changed LED ${msg.code} state to ${msg.value}`);
     });
   });
+});
+
+io.on('get_config', function () {
+  io.emit('config', config);
 });
 
 http.listen(3000, function () {
