@@ -8,7 +8,14 @@
           </div>
           <div class="card-body">
             <img src="../assets/logo.svg">
-            <toggle-button class="float-right toggle-button" :labels="true" :width="140" :height="45" @change="onChangeEventHandler"/>
+            <toggle-button class="float-right toggle-button"
+              :labels="true"
+              :width="140"
+              :height="45"
+              :sync="true"
+              :value="item.value"
+              @change="onChangeEventHandler(item)"
+              />
           </div>
         </div>
       </div>
@@ -45,6 +52,7 @@ export default {
   data() {
     return {
       configuration: [],
+      dictionary: {},
     };
   },
 
@@ -52,40 +60,26 @@ export default {
     this.$socket.emit('get_config');
   },
 
+  methods: {
+    onChangeEventHandler: function onChangeEventHandler(item) {
+      console.log(item.value);
+      this.$socket.emit('change_value', {
+                code : item.code,
+                value : item.value ? 1 : 0
+            });
+    },
+  },
+
   sockets: {
     config: function config(val) {
       console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)', val);
-      this.configuration = [
-        {
-            "type" : "insalata",
-            "code" : "area1",
-            "description" : "Area 1",
-            "pin_id": 4,
-            "direction": "out"
-        },
-        {
-            "type" : "zucchine",
-            "code" : "area2",         
-            "description" : "Area 2",
-            "pin_id": 17,
-            "direction": "out"
-        },
-        {
-            "type" : "pomodori",
-            "code" : "area3",
-            "description" : "Area 3",
-            "pin_id": 27,
-            "direction": "out"
-        },
-        {
-            "type" : "cetrioli",         
-            "code" : "area4",         
-            "description" : "Area 4",
-            "pin_id": 17,
-            "direction": "out"
-        }
-    ]
+      this.configuration = val.relays;
+      this.configuration.map((item) => this.dictionary[item.code] = item);
     },
+    value_changed: function value_changed(msg) {
+      debugger
+      this.dictionary[msg.code].value = msg.value;
+    }
   },
 };
 </script>
