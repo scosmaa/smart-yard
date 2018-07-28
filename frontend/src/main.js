@@ -1,10 +1,15 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import Vue from 'vue';
+import socketio from 'socket.io-client';
+import VueSocketIO from 'vue-socket.io';
+import App from './App.vue';
+import router from './router';
 
-Vue.config.productionTip = false
+const SocketInstance = socketio('http://192.168.1.14:3000');
+
+Vue.use(VueSocketIO, SocketInstance);
+Vue.config.productionTip = false;
 
 new Vue({
   router,
-  render: h => h(App)
-}).$mount('#app')
+  render: h => h(App),
+}).$mount('#app');
