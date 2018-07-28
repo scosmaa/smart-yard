@@ -1,7 +1,18 @@
 {
     "relays" : [
         {
+            "code" : "area1",
             "pin_id": 4,
+            "direction": "out"
+        },
+        {
+            "code" : "area2",
+            "pin_id": 17,
+            "direction": "out"
+        },
+        {
+            "code" : "area3",
+            "pin_id": 27,
             "direction": "out"
         }
     ]
