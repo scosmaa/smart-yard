@@ -3,21 +3,21 @@
         {
             "type" : "salad",
             "code" : "area1",
-            "description" : "Area 1",
+            "description" : "Insalata",
             "pin_id": 4,
             "direction": "out"
         },
         {
             "type" : "tomatoes",
             "code" : "area2",         
-            "description" : "Area 2",
+            "description" : "Pomodori",
             "pin_id": 17,
             "direction": "out"
         },
         {   
             "type" : "onion",
             "code" : "area3",
-            "description" : "Area 3",
+            "description" : "Cipolle",
             "pin_id": 27,
             "direction": "out"
         }
