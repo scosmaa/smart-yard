@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div v-for="item in configuration" :key="item.id" class="col-md-3">
+      <div v-for="item in configuration" @click="onChangeEventHandler(item)" :key="item.id" class="col-md-2">
         <div class="card">
           <div class="card-header">
             {{item.description}}

@@ -14,7 +14,7 @@ export default new Router({
       component: Home,
       beforeEnter(to, from, next) {
         if (!Vue.prototype.$socket) {
-          Vue.use(VueSocketIO, 'http://192.168.1.14:3000');
+          Vue.use(VueSocketIO, 'http://192.168.1.9:3000');
         }
         next();
       },
