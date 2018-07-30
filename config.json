@@ -20,6 +20,41 @@
             "description" : "Cipolle",
             "pin_id": 27,
             "direction": "out"
+        },
+        {   
+            "type" : "rucola",
+            "code" : "area4",
+            "description" : "Rucola",
+            "pin_id": 22,
+            "direction": "out"
+        },
+        {   
+            "type" : "aaaa",
+            "code" : "area5",
+            "description" : "Rucola",
+            "pin_id": 26,
+            "direction": "out"
+        },
+        {   
+            "type" : "ssss",
+            "code" : "area6",
+            "description" : "Rucola",
+            "pin_id": 19,
+            "direction": "out"
+        },
+        {   
+            "type" : "ssss",
+            "code" : "area7",
+            "description" : "Rucola",
+            "pin_id": 13,
+            "direction": "out"
+        },
+        {   
+            "type" : "ssss",
+            "code" : "area8",
+            "description" : "Rucola",
+            "pin_id": 6,
+            "direction": "out"
         }
     ]
 }
