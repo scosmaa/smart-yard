@@ -3,6 +3,7 @@ let server = Express();
 const http = require('http').Server(server);
 const io = require('socket.io')(http);
 const schedule = require('node-schedule');
+const sensorLib = require('node-dht-sensor');
 
 const Gpio = require('onoff').Gpio;
 const config = require('./config.json');
@@ -58,6 +59,23 @@ io.on('connection', function (socket) {
     });
 });
 
+const button = new Gpio(5, 'in', 'both');
+
+button.watch((err, value) => console.log('value', value));
+
+var sensorType = 11; // 11 for DHT11, 22 for DHT22 and AM2302
+var sensorPin  = 21;  // The GPIO pin number for sensor signal
+if (!sensorLib.initialize(sensorType, sensorPin)) {
+    console.warn('Failed to initialize sensor');
+}
+
+setInterval(function() {
+  var readout = sensorLib.read();
+  console.log(readout);
+  
+  console.log('Temperature:', readout.temperature.toFixed(1) + 'C');
+  console.log('Humidity:   ', readout.humidity.toFixed(1)    + '%');
+}, 2000);
 
 http.listen(3000, function () {
   console.log('Example app listening on port 3000!');

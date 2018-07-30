@@ -22,37 +22,37 @@
             "direction": "out"
         },
         {   
-            "type" : "rucola",
+            "type" : "aubergine",
             "code" : "area4",
-            "description" : "Rucola",
+            "description" : "Melanzane",
             "pin_id": 22,
             "direction": "out"
         },
         {   
-            "type" : "aaaa",
+            "type" : "cucumber",
             "code" : "area5",
-            "description" : "Rucola",
+            "description" : "Cetrioli",
             "pin_id": 26,
             "direction": "out"
         },
         {   
-            "type" : "ssss",
+            "type" : "garlic",
             "code" : "area6",
-            "description" : "Rucola",
+            "description" : "Aglio",
             "pin_id": 19,
             "direction": "out"
         },
         {   
-            "type" : "ssss",
+            "type" : "peas",
             "code" : "area7",
-            "description" : "Rucola",
+            "description" : "Piselli",
             "pin_id": 13,
             "direction": "out"
         },
         {   
-            "type" : "ssss",
+            "type" : "potatoes",
             "code" : "area8",
-            "description" : "Rucola",
+            "description" : "Patate",
             "pin_id": 6,
             "direction": "out"
         }
