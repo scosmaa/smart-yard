@@ -3,22 +3,57 @@
         {
             "type" : "salad",
             "code" : "area1",
-            "description" : "Area 1",
+            "description" : "Insalata",
             "pin_id": 4,
             "direction": "out"
         },
         {
             "type" : "tomatoes",
             "code" : "area2",         
-            "description" : "Area 2",
+            "description" : "Pomodori",
             "pin_id": 17,
             "direction": "out"
         },
         {   
             "type" : "onion",
             "code" : "area3",
-            "description" : "Area 3",
+            "description" : "Cipolle",
             "pin_id": 27,
+            "direction": "out"
+        },
+        {   
+            "type" : "aubergine",
+            "code" : "area4",
+            "description" : "Melanzane",
+            "pin_id": 22,
+            "direction": "out"
+        },
+        {   
+            "type" : "cucumber",
+            "code" : "area5",
+            "description" : "Cetrioli",
+            "pin_id": 26,
+            "direction": "out"
+        },
+        {   
+            "type" : "garlic",
+            "code" : "area6",
+            "description" : "Aglio",
+            "pin_id": 19,
+            "direction": "out"
+        },
+        {   
+            "type" : "peas",
+            "code" : "area7",
+            "description" : "Piselli",
+            "pin_id": 13,
+            "direction": "out"
+        },
+        {   
+            "type" : "potatoes",
+            "code" : "area8",
+            "description" : "Patate",
+            "pin_id": 6,
             "direction": "out"
         }
     ]
