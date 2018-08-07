@@ -5,19 +5,18 @@ import VueSocketIO from 'vue-socket.io';
 import Home from './views/Home.vue';
 
 Vue.use(Router);
-
+Vue.use(VueSocketIO, 'http://192.168.1.7:3000', {
+  reconnection: true,
+  reconnectionDelay: 1000,
+  reconnectionDelayMax: 5000,
+  reconnectionAttempts: Infinity,
+});
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'home',
       component: Home,
-      beforeEnter(to, from, next) {
-        if (!Vue.prototype.$socket) {
-          Vue.use(VueSocketIO, 'http://192.168.1.9:3000');
-        }
-        next();
-      },
     },
     {
       path: '/about',
