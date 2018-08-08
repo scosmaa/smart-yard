@@ -20,7 +20,8 @@
     "vue": "^2.5.16",
     "vue-js-toggle-button": "^1.2.3",
     "vue-router": "^3.0.1",
-    "vue-socket.io": "^2.1.1-b"
+    "vue-socket.io": "^2.1.1-b",
+    "vue2-timepicker": "^0.1.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-rc.8",
