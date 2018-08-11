@@ -61,9 +61,12 @@ io.on('connection', function (socket) {
 
 const button = new Gpio(5, 'in', 'both');
 
-button.watch((err, value) => console.log('value', value));
+button.watch((err, value) => {
+  console.log('value', value);
+  io.emit('rain_status', !!!value);
+});
 
-var sensorType = 11; // 11 for DHT11, 22 for DHT22 and AM2302
+var sensorType = 22; // 11 for DHT11, 22 for DHT22 and AM2302
 var sensorPin  = 21;  // The GPIO pin number for sensor signal
 if (!sensorLib.initialize(sensorType, sensorPin)) {
     console.warn('Failed to initialize sensor');
@@ -72,6 +75,11 @@ if (!sensorLib.initialize(sensorType, sensorPin)) {
 setInterval(function() {
   var readout = sensorLib.read();
   console.log(readout);
+
+  io.emit('weather_infos', {
+    temperature: readout.temperature,
+    humidity: readout.humidity,
+  });
   
   console.log('Temperature:', readout.temperature.toFixed(1) + 'C');
   console.log('Humidity:   ', readout.humidity.toFixed(1)    + '%');
