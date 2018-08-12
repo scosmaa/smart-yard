@@ -352,9 +352,21 @@
       hideModal(evt) {
         this.$refs.myModalRef.hide();
       },
+      _resetItems() {
+        this.items.map((item) => {
+          item.mon = [];
+          item.tue = [];
+          item.wed = [];
+          item.thu = [];
+          item.fri = [];
+          item.sat = [];
+          item.sun = [];
+        })
+      },
+
       _calculateEvents() {
       // Lista eventi
-      debugger
+      this._resetItems();
       this.events.map((event) => {
         //Lista Giorni
         event.days.map((day) => {
@@ -415,6 +427,7 @@
       config: function config(val) {
         console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)', val);
 
+        this.options = [];
         this.configuration = val.relays;
         this.configuration.map((item) => this.options.push({
           value: item,
