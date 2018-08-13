@@ -334,16 +334,18 @@
     },
     methods: {
       onSubmit(evt) {
-        debugger
         evt.preventDefault();
-        alert(JSON.stringify(this.form));
-        this.events.push({
+        var newSchedulation = {
           code: this.form.area.code,
           days: this.form.days,
           startTime: this.form.startTime.HH + ':' + this.form.startTime.mm,
           stopTime: this.form.stopTime.HH + ':' + this.form.stopTime.mm
-        });
-        this._calculateEvents();
+        };
+
+        this.events.push(newSchedulation);
+
+        this.$socket.emit('add_schedulation', newSchedulation );
+        //this._calculateEvents();
         this.$refs.myModalRef.hide();
       },
       editEvent(evt) {
@@ -370,11 +372,12 @@
       this.events.map((event) => {
         //Lista Giorni
         event.days.map((day) => {
-          var startTime = +event.startTime.replace(':', ''),
-            stopTime = +event.stopTime.replace(':', '');
+          debugger
+          var startTime = +event.startTime.split(':')[0],
+            stopTime = +event.stopTime.split(':')[0];
           this.items.map((item) => {
-            var currentTime = +item.ora.replace(':', '');
-            if(startTime <= currentTime && currentTime < stopTime) {
+            var currentTime = +item.ora.split(':')[0];
+            if((currentTime === stopTime && currentTime === startTime) || (startTime <= currentTime && currentTime < stopTime)) {
               item[day].push({
                 area: this.dictionary[event.code],
                 event: event});
@@ -387,20 +390,7 @@
     data() {
       return {
         dictionary: {},
-        events: [
-          {
-            code: 'area1',
-            days: ['mon', 'tue'],
-            startTime: '07:00',
-            stopTime: '11:00'
-          },
-          {
-            code: 'area2',
-            days: ['mon', 'tue'],
-            startTime: '07:00',
-            stopTime: '11:00'
-          }
-        ],
+        events: [],
         form: {
           area: null,
           days: [],
@@ -422,6 +412,7 @@
     
     mounted: function mounted() {
       this.$socket.emit('get_config');
+      this.$socket.emit('get_schedulation');
     },
     sockets: {
       config: function config(val) {
@@ -436,6 +427,11 @@
         this.configuration.map((item) => this.dictionary[item.code] = item);
         this._calculateEvents();
       },
+      schedulation: function schedulation(events) {
+        debugger
+        this.events = events;
+        this._calculateEvents();
+      }
     },
   }
 </script>
