@@ -5,7 +5,7 @@ import VueSocketIO from 'vue-socket.io';
 import Home from './views/Home.vue';
 
 Vue.use(Router);
-Vue.use(VueSocketIO, 'http://192.168.1.9:3000', {
+Vue.use(VueSocketIO, 'http://192.168.1.149:3000', {
   reconnection: true,
   reconnectionDelay: 1000,
   reconnectionDelayMax: 5000,
